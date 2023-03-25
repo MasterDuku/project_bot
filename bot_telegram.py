@@ -3,7 +3,8 @@ from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
 from dotenv import load_dotenv, find_dotenv
 import os
-
+import json
+from string import punctuation
 
 load_dotenv(find_dotenv())
 
@@ -38,7 +39,9 @@ async def on_startup(_):
 """****************************Общая часть************************************"""
 @dp.message_handler()
 async def echo_send(message: types.Message):
-
+    if {i.lower().translate(str.maketrans('', '', punctuation)) for i in message.text.split(' ')}.intersection(set(json.load(open('cenz.json')))) != set():
+        await message.reply(text='Материться низя')
+        await message.delete()
 
     
     # await message.answer(message.text)
