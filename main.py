@@ -1,8 +1,11 @@
 from aiogram.utils import executor
 from create_bot import dp
 
-from handlers import client, admin, other
+from handlers import admin, client, other
 
+
+
+admin.register_handlers_admin(dp)
 client.register_heandlers_client(dp)
 other.register_heandlers_other(dp)
 

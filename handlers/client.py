@@ -7,8 +7,7 @@ from keynav import mainMenuClient
 
 # @dp.message_handler(commands=['start','help'])
 async def command_start(message: types.Message):
-    print(message.contact, '*'*10)
-    print(message, "-"*10)
+    
     try:
         await bot.send_message(message.from_user.id, 'Привет! Я бот и мне интересно с тобой общаться.', reply_markup=mainMenuClient)
         await message.delete()
